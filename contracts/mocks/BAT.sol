@@ -3,7 +3,7 @@ pragma solidity >=0.7.0 <0.9.0;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
-contract Bat is ERC20 {
+contract BAT is ERC20 {
     constructor() ERC20('BAT', 'Basic Authentication Token') {}
 
     function faucet(address to, uint amount) external {
