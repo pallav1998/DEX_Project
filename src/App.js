@@ -1,7 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import { getContracts, getWeb3 } from "./utils";
 
 function App() {
+  useEffect(() => {
+    const init = async () => {
+      const provider = await getWeb3();
+      const dex = await getContracts(provider);
+      // console.log("dex:", dex);
+      const nextorderid = await dex.nextOrderId();
+      console.log('nextorderid:', nextorderid)
+    };
+    init();
+  }, []);
   return (
     <div className="App">
       <header className="App-header">
