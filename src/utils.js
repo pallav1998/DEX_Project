@@ -21,25 +21,25 @@ const getWeb3 = () => {
 };
 
 const getContracts = async (web3) => {
-  // const signer = web3.getSigner();
+  const signer = web3.getSigner();
   // console.log(signer, "signer");
   // console.log(await signer.getAddress());
 
-  const dex = new ethers.Contract(DEX_ADDRESS, Dex.abi, web3);
-  return dex;
-  // const tokens = await dex.getTokens();
-  // const tokenContracts = tokens.reduce(
-  //   (acc, token) => ({
-  //     ...acc,
-  //     [ethers.utils.parseBytes32String(token.ticker)]: new ethers.Contract(
-  //       token.tokenAddress,
-  //       ERC20Abi,
-  //       signer
-  //     ),
-  //   }),
-  //   {}
-  // );
-  // return { dex, ...tokenContracts };
+  const dex = new ethers.Contract(DEX_ADDRESS, Dex.abi, signer);
+  const tokens = await dex.getTokens();
+
+  const tokenContracts = tokens.reduce(
+    (acc, token) => ({
+      ...acc,
+      [ethers.utils.parseBytes32String(token.ticker)]: new ethers.Contract(
+        token.tokenAddress,
+        ERC20Abi,
+        web3
+      ),
+    }),
+    {}
+  );
+  return { dex, ...tokenContracts };
 };
 
 export { getWeb3, getContracts };

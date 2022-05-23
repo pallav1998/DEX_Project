@@ -1,16 +1,17 @@
 import React from "react";
 import { List } from "antd";
 import styles from "./styles.module.css";
+import Wallet from "./Wallet";
 // import Wallet from "./Wallet";
 // import NewOrder from "./NewOrder";
 
 export default function SideBar({
   tokens,
   setSelectedToken,
-  //   selectedToken,
-  //   deposit,
-  //   balance,
-  //   withdraw,
+  selectedToken,
+  deposit,
+  withdraw,
+  balance,
   //   createLimitOrder,
   //   createMarketOrder,
 }) {
@@ -31,14 +32,15 @@ export default function SideBar({
           </List.Item>
         )}
       />
-      {/* <Wallet
-        walletBalance={balance.tokenWallet}
-        contractBalance={balance.tokenDex}
+      <Wallet
         selectedToken={selectedToken}
         deposit={deposit}
         withdraw={withdraw}
-      ></Wallet>
-      {selectedToken !== "DAI" ? (
+        walletBalance={balance.tokenWallet}
+        contractBalance={balance.tokenDex}
+      />
+
+      {/* {selectedToken !== "DAI" ? (
         <NewOrder
           createLimitOrder={createLimitOrder}
           createMarketOrder={createMarketOrder}

@@ -10,17 +10,17 @@ function App() {
   const [contracts, setContracts] = useState(undefined);
   const [accounts, setAccounts] = useState([]);
   const [selectedToken, setSelectedToken] = useState("DAI");
-  // const [balance, setBalance] = useState({});
+  const [balance, setBalance] = useState({});
 
   useEffect(() => {
     const init = async () => {
       const provider = await getWeb3();
-      const contracts = await getContracts(provider);
 
+      const contracts = await getContracts(provider);
       const accounts = await provider.listAccounts();
 
-      let tokens = await contracts.getTokens();
-      console.log("tokens:", tokens);
+      // let tokens = await contracts.getTokens();
+      // console.log("tokens:", tokens);
 
       setProvider(provider);
       setContracts(contracts);
@@ -37,7 +37,7 @@ function App() {
   return (
     <div className="App">
       {!isReady() ? (
-        <Spin />
+        <Spin className="mt-5" />
       ) : (
         <Container
           provider={provider}
@@ -45,10 +45,10 @@ function App() {
           accounts={accounts}
           setSelectedToken={setSelectedToken}
           selectedToken={selectedToken}
-          // balance={balance}
-          // setBalance={setBalance}
+          balance={balance}
+          setBalance={setBalance}
           // setAccounts={setAccounts}
-        ></Container>
+        />
       )}
     </div>
   );

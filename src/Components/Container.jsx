@@ -2,15 +2,14 @@ import { ethers } from "ethers";
 import React, { useEffect, useState } from "react";
 import { Layout, Typography } from "antd";
 import SideBar from "./SideBar";
-import Market from "./Market";
+// import Market from "./Market";
 // import AllOrders from "./AllOrder";
 // import MyOrders from "./MyOrder";
 // import AllTrades from "./AllTrades";
-const { Header, Footer, Sider, Content } = Layout;
+const { Header, Sider, Content } = Layout;
+const { Title } = Typography;
 
 // const DEX_ADDRESS = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
-
-const { Title } = Typography;
 
 // const SIDE = {
 //   BUY: 0,
@@ -23,9 +22,9 @@ export default function Container({
   accounts,
   selectedToken,
   setSelectedToken,
-  //   balance,
-  //   setBalance,
-  //   setAccounts,
+  balance,
+  setBalance,
+  setAccounts,
 }) {
   const [tokens, setTokens] = useState([]);
   //   const [trades, setTrades] = useState([]);
@@ -33,27 +32,65 @@ export default function Container({
   useEffect(() => {
     fetchTokens();
 
-    // const init = async () => {
-    //   const balances = await getBalances(accounts[0], selectedToken);
-    //   const orders = await getOrders(selectedToken);
-    //   const _accounts = await provider.listAccounts();
-    //   setAccounts(_accounts);
-    //   setOrders(orders);
-    //   setBalance(balances);
-    //   console.log(balances);
-    // };
-    // init();
+    const init = async () => {
+      const balances = await getBalances(accounts[0], selectedToken);
+      setBalance(balances);
+      //   const orders = await getOrders(selectedToken);
+      //   const _accounts = await provider.listAccounts();
+      //   setAccounts(_accounts);
+      //   setOrders(orders);
+    };
+    init();
   }, []); //selectedToken
 
+  //fetching all the tockens from the contract
   const fetchTokens = async () => {
-    // const dex = contracts;
-    // console.log("dex:", dex);
-    let tokens = await contracts.getTokens();
+    const dex = contracts;
+    let tokens = await dex.getTokens();
     console.log("tokens:", tokens);
     tokens = tokens.map((_item) =>
       ethers.utils.parseBytes32String(_item.ticker)
     );
     setTokens(tokens);
+  };
+
+  const getBalances = async (account, token) => {
+    const tokenDex = await contracts.traderBalances(
+      account,
+      ethers.utils.formatBytes32String(selectedToken)
+    );
+    const tokenContract = contracts[selectedToken];
+    console.log(tokenContract, selectedToken, contracts);
+
+    const tokenWallet = await contracts[selectedToken].balanceOf(account);
+    console.log("tokenWallet:", tokenWallet);
+
+    return {
+      tokenDex: tokenDex.toString(),
+      tokenWallet: tokenWallet.toString(),
+    };
+  };
+
+  const deposit = async (amount) => {
+    await contracts[selectedToken].approve(contracts.dex.address, amount);
+    await contracts.dex.deposit(
+      amount,
+      ethers.utils.formatBytes32String(selectedToken)
+    );
+
+    const balances = await getBalances(accounts[0], selectedToken);
+    setBalance(balances);
+  };
+
+  const withdraw = async (amount) => {
+    await contracts.dex.withdraw(
+      amount,
+      ethers.utils.formatBytes32String(selectedToken)
+    );
+
+    const balances = await getBalances(accounts[0], selectedToken);
+
+    setBalance(balances);
   };
 
   //   const [orders, setOrders] = useState({
@@ -73,47 +110,6 @@ export default function Container({
   //     ]);
 
   //     return { buy: orders[0], sell: orders[1] };
-  //   };
-
-  //   const getBalances = async (account, token) => {
-  //     const tokenDex = await contracts.dex.traderBalances(
-  //       account,
-  //       ethers.utils.formatBytes32String(selectedToken)
-  //     );
-
-  //     const tokenContract = contracts[selectedToken];
-  //     console.log(tokenContract, selectedToken, contracts);
-
-  //     const tokenWallet = await contracts[selectedToken].balanceOf(account);
-
-  //     return {
-  //       tokenDex: tokenDex.toString(),
-  //       tokenWallet: tokenWallet.toString(),
-  //     };
-  //   };
-
-  //   const deposit = async (amount) => {
-  //     await contracts[selectedToken].approve(contracts.dex.address, amount);
-
-  //     await contracts.dex.deposit(
-  //       amount,
-  //       ethers.utils.formatBytes32String(selectedToken)
-  //     );
-
-  //     const balances = await getBalances(accounts[0], selectedToken);
-
-  //     setBalance(balances);
-  //   };
-
-  //   const withdraw = async (amount) => {
-  //     await contracts.dex.withdraw(
-  //       amount,
-  //       ethers.utils.formatBytes32String(selectedToken)
-  //     );
-
-  //     const balances = await getBalances(accounts[0], selectedToken);
-
-  //     setBalance(balances);
   //   };
 
   //   const createLimitOrder = async (amount, price, side) => {
@@ -182,10 +178,10 @@ export default function Container({
           <SideBar
             setSelectedToken={setSelectedToken}
             tokens={tokens.filter((item) => item !== "DAI")}
-            // selectedToken={selectedToken}
-            // deposit={deposit}
-            // balance={balance}
-            // withdraw={withdraw}
+            selectedToken={selectedToken}
+            deposit={deposit}
+            balance={balance}
+            withdraw={withdraw}
             // createLimitOrder={createLimitOrder}
             // createMarketOrder={createMarketOrder}
           />
