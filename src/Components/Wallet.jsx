@@ -1,17 +1,11 @@
 import React, { useState } from "react";
 import styles from "./styles.module.css";
-import { Input, Radio, Typography, Modal, Button } from "antd";
-const { Title } = Typography;
+import { Input, Modal, Button } from "antd";
 
 const Direction = {
   WITHDRAW: "WITHDRAW",
   DEPOSIT: "DEPOSIT",
 };
-
-const options = [
-  { label: "WITHDRAW", value: "WITHDRAW" },
-  { label: "DEPOSIT", value: "DEPOSIT" },
-];
 
 function Wallet({
   selectedToken,
@@ -44,13 +38,6 @@ function Wallet({
   const DipositModal = () => {
     setDipositModal(true);
     setDirection(Direction.DEPOSIT);
-  };
-
-  const WithdrawModalOpen = () => {
-    setWithdrawModal(false);
-  };
-  const DipositModalOpen = () => {
-    setDipositModal(false);
   };
 
   const WithdrawModalClose = () => {
