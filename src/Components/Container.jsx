@@ -1,7 +1,9 @@
 import { ethers } from "ethers";
 import React, { useEffect, useState } from "react";
-import { Layout, Typography } from "antd";
+import styles from "./styles.module.css";
+import { Layout, Typography, Modal, Button } from "antd";
 import SideBar from "./SideBar";
+import Wallet from "./Wallet";
 // import Market from "./Market";
 // import AllOrders from "./AllOrder";
 // import MyOrders from "./MyOrder";
@@ -45,8 +47,7 @@ export default function Container({
 
   //fetching all the tockens from the contract
   const fetchTokens = async () => {
-    const dex = contracts;
-    let tokens = await dex.getTokens();
+    let tokens = await contracts.dex.getTokens();
     console.log("tokens:", tokens);
     tokens = tokens.map((_item) =>
       ethers.utils.parseBytes32String(_item.ticker)
@@ -55,7 +56,7 @@ export default function Container({
   };
 
   const getBalances = async (account, token) => {
-    const tokenDex = await contracts.traderBalances(
+    const tokenDex = await contracts.dex.traderBalances(
       account,
       ethers.utils.formatBytes32String(selectedToken)
     );
@@ -174,7 +175,7 @@ export default function Container({
         </Title>
       </Header>
       <Layout>
-        <Sider width={400}>
+        <Sider width={250}>
           <SideBar
             setSelectedToken={setSelectedToken}
             tokens={tokens.filter((item) => item !== "DAI")}
@@ -186,8 +187,15 @@ export default function Container({
             // createMarketOrder={createMarketOrder}
           />
         </Sider>
-        {/* <Content>
-          <AllTrades trades={trades}></AllTrades>
+        <Content>
+          <Wallet
+            selectedToken={selectedToken}
+            deposit={deposit}
+            withdraw={withdraw}
+            walletBalance={balance.tokenWallet}
+            contractBalance={balance.tokenDex}
+          />
+          {/* <AllTrades trades={trades}></AllTrades>
           <AllOrders orders={orders}></AllOrders>
           <MyOrders
             orders={{
@@ -200,8 +208,8 @@ export default function Container({
                   order.trader.toLowerCase() === accounts[0].toLowerCase()
               ),
             }}
-          ></MyOrders>
-        </Content> */}
+          ></MyOrders> */}
+        </Content>
       </Layout>
     </Layout>
   );

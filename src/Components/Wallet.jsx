@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Input, Radio, Typography } from "antd";
-
+import styles from "./styles.module.css";
+import { Input, Radio, Typography, Modal, Button } from "antd";
 const { Title } = Typography;
 
 const Direction = {
@@ -20,45 +20,70 @@ function Wallet({
   deposit,
   withdraw,
 }) {
-  const [direction, setDirection] = useState(Direction.DEPOSIT);
+  const [direction, setDirection] = useState("");
   const [amount, setAmount] = useState(0);
+  const [withdrawModal, setWithdrawModal] = useState(false);
+  const [dipositModal, setDipositModal] = useState(false);
 
   const onSubmit = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     console.log(amount, direction);
     if (direction === Direction.DEPOSIT) {
       deposit(amount);
-    } else {
+    } else if (direction === Direction.WITHDRAW) {
       withdraw(amount);
+    } else {
+      alert("Please select a valid direction");
     }
   };
 
+  const WithdrawModal = () => {
+    setWithdrawModal(true);
+    setDirection(Direction.WITHDRAW);
+  };
+  const DipositModal = () => {
+    setDipositModal(true);
+    setDirection(Direction.DEPOSIT);
+  };
+
+  const WithdrawModalOpen = () => {
+    setWithdrawModal(false);
+  };
+  const DipositModalOpen = () => {
+    setDipositModal(false);
+  };
+
+  const WithdrawModalClose = () => {
+    setWithdrawModal(false);
+  };
+  const DipositModalClose = () => {
+    setDipositModal(false);
+  };
+
   return (
-    <div style={{ color: "white" }}>
-      <Title style={{ color: "white" }} level={2}>
-        Wallet
-      </Title>
-      <div>
-        <Title style={{ color: "white" }}>
-          Token Balance for {selectedToken}
-        </Title>
-        <div>
-          <div>Wallet : {walletBalance}</div>
-          <div>Dex : {contractBalance}</div>
+    <div>
+      <div className={styles.walletContainer}>
+        <div className="d-flex flex-direction-column justify-content-between">
+          <h5 className="p-3">Wallet Balance: {walletBalance} Wie</h5>
+          <h5 className="p-3">Selected Token: {selectedToken}</h5>
+          <div className="p-2">
+            <Button type="primary" onClick={WithdrawModal}>
+              Withdraw
+            </Button>
+            <Button type="secondary" onClick={DipositModal}>
+              Diposit
+            </Button>
+          </div>
         </div>
-      </div>
-      <div>
-        <Title style={{ color: "white" }}>Transfer {selectedToken}</Title>
-        <div>
-          <form onSubmit={onSubmit}>
-            <label>Direction</label>
-            <Radio.Group
-              options={options}
-              onChange={(e) => setDirection(e.target.value)}
-              value={direction}
-              optionType="button"
-            />
-            <br></br>
+        <Modal
+          title="Withdraw Fund"
+          visible={withdrawModal}
+          onOk={onSubmit}
+          onCancel={WithdrawModalClose}
+          okText="Withdraw"
+        >
+          <div>
+            <h5>Transfer {selectedToken}</h5>
 
             <Input
               placeholder="Amount"
@@ -66,9 +91,26 @@ function Wallet({
               onChange={(e) => setAmount(e.target.value)}
               addonAfter={selectedToken}
             />
-            <button type="submit">Submit</button>
-          </form>
-        </div>
+          </div>
+        </Modal>
+
+        <Modal
+          title="Diposit Fund"
+          visible={dipositModal}
+          onOk={onSubmit}
+          onCancel={DipositModalClose}
+          okText="Diposit"
+        >
+          <div>
+            <h5>Transfer {selectedToken}</h5>
+            <Input
+              placeholder="Amount"
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
+              addonAfter={selectedToken}
+            />
+          </div>
+        </Modal>
       </div>
     </div>
   );

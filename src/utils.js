@@ -23,7 +23,7 @@ const getWeb3 = () => {
 const getContracts = async (web3) => {
   const signer = web3.getSigner();
   // console.log(signer, "signer");
-  // console.log(await signer.getAddress());
+  console.log(await signer.getAddress());
 
   const dex = new ethers.Contract(DEX_ADDRESS, Dex.abi, signer);
   const tokens = await dex.getTokens();
@@ -34,7 +34,7 @@ const getContracts = async (web3) => {
       [ethers.utils.parseBytes32String(token.ticker)]: new ethers.Contract(
         token.tokenAddress,
         ERC20Abi,
-        web3
+        signer
       ),
     }),
     {}

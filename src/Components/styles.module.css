@@ -2,3 +2,10 @@
 .sidebarList h4 {
   color: white;
 }
+
+/* Wallet */
+.walletContainer {
+  width: 100%;
+  height: 52px;
+  border: 2px solid black;
+}

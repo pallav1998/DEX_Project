@@ -1,8 +1,6 @@
 import React from "react";
 import { List } from "antd";
 import styles from "./styles.module.css";
-import Wallet from "./Wallet";
-// import Wallet from "./Wallet";
 // import NewOrder from "./NewOrder";
 
 export default function SideBar({
@@ -31,13 +29,6 @@ export default function SideBar({
             />
           </List.Item>
         )}
-      />
-      <Wallet
-        selectedToken={selectedToken}
-        deposit={deposit}
-        withdraw={withdraw}
-        walletBalance={balance.tokenWallet}
-        contractBalance={balance.tokenDex}
       />
 
       {/* {selectedToken !== "DAI" ? (
