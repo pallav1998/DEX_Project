@@ -14,7 +14,11 @@ function MyOrders({ orders }) {
         }}
       >
         <thead>
-          <tr style={{ background: `${side === "BUY" ? "green" : "red"}` }}>
+          <tr
+            style={{
+              background: `${side === "BUY" ? "gray" : "rgb(172, 165, 165)"}`,
+            }}
+          >
             <th colSpan="3">{side}</th>
           </tr>
           <tr>
@@ -48,7 +52,7 @@ function MyOrders({ orders }) {
 
   return (
     <Card>
-      <Title level={1}>My Orders</Title>
+      <Title level={2}>My Orders</Title>
       <div
         style={{
           display: "flex",

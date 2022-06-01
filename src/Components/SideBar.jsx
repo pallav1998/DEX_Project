@@ -1,18 +1,8 @@
 import React from "react";
 import { List } from "antd";
 import styles from "./styles.module.css";
-import NewOrder from "./NewOrder";
 
-export default function SideBar({
-  tokens,
-  setSelectedToken,
-  selectedToken,
-  deposit,
-  withdraw,
-  balance,
-  createLimitOrder,
-  createMarketOrder,
-}) {
+export default function SideBar({ tokens, setSelectedToken }) {
   return (
     <div>
       <List
@@ -22,21 +12,12 @@ export default function SideBar({
         renderItem={(item) => (
           <List.Item onClick={() => setSelectedToken(item)}>
             <List.Item.Meta
-              style={{
-                color: "#fff",
-              }}
+              className={styles.sidebarListItem}
               title={`${item}/DAI`}
             />
           </List.Item>
         )}
       />
-
-      {selectedToken !== "DAI" ? (
-        <NewOrder
-          createLimitOrder={createLimitOrder}
-          createMarketOrder={createMarketOrder}
-        ></NewOrder>
-      ) : null}
     </div>
   );
 }

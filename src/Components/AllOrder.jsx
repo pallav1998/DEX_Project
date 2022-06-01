@@ -48,7 +48,7 @@ function AllOrders({ orders }) {
 
   return (
     <Card>
-      <Title level={1}>All Orders</Title>
+      <Title level={2}>All Orders</Title>
       <div
         style={{
           display: "flex",

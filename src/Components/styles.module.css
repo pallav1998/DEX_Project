@@ -3,9 +3,21 @@
   color: white;
 }
 
+.sidebarListItem :hover {
+  color: rgb(6, 205, 6);
+  cursor: pointer;
+}
+
 /* Wallet */
-.walletContainer {
+.walletContainer,
+.newOrderComponent {
   width: 100%;
-  height: 52px;
+  height: 51.5px;
   border: 2px solid black;
+  padding: 0 10px;
+}
+
+/* .newOrder */
+.newOrderComponent {
+  border-top: 0px;
 }

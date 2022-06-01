@@ -7,13 +7,7 @@ const Direction = {
   DEPOSIT: "DEPOSIT",
 };
 
-function Wallet({
-  selectedToken,
-  walletBalance,
-  contractBalance,
-  deposit,
-  withdraw,
-}) {
+function Wallet({ selectedToken, walletBalance, deposit, withdraw }) {
   const [direction, setDirection] = useState("");
   const [amount, setAmount] = useState(0);
   const [withdrawModal, setWithdrawModal] = useState(false);
@@ -50,8 +44,8 @@ function Wallet({
     <div>
       <div className={styles.walletContainer}>
         <div className="d-flex flex-direction-column justify-content-between">
-          <h5 className="p-3">Wallet Balance: {walletBalance} Wie</h5>
-          <h5 className="p-3">Selected Token: {selectedToken}</h5>
+          <h5 className="pt-3 ml-3 m-0">Wallet Balance: {walletBalance} Wie</h5>
+          <h5 className="pt-3 m-0">Selected Token: {selectedToken}</h5>
           <div className="p-2">
             <Button type="primary" onClick={WithdrawModal}>
               Withdraw

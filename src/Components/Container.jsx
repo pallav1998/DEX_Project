@@ -1,17 +1,13 @@
 import { ethers } from "ethers";
 import React, { useEffect, useState } from "react";
-// import styles from "./styles.module.css";
 import { Layout, Typography } from "antd";
 import SideBar from "./SideBar";
 import Wallet from "./Wallet";
-// import Market from "./Market";
-import AllOrders from "./AllOrder";
+import NewOrder from "./NewOrder";
 import MyOrders from "./MyOrder";
-// import AllTrades from "./AllTrades";
+import AllOrders from "./AllOrder";
 const { Header, Sider, Content } = Layout;
 const { Title } = Typography;
-
-// const DEX_ADDRESS = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 
 const SIDE = {
   BUY: 0,
@@ -33,7 +29,6 @@ export default function Container({
     buy: [],
     sell: [],
   });
-  //   const [trades, setTrades] = useState([]);
 
   useEffect(() => {
     fetchTokens();
@@ -47,7 +42,7 @@ export default function Container({
       setAccounts(_accounts);
     };
     init();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedToken]);
 
   //fetching all the tockens from the contract
@@ -135,33 +130,6 @@ export default function Container({
     return { buy: orders[0], sell: orders[1] };
   };
 
-  //   const listenToTrades = (
-  //     tradeId,
-  //     orderId,
-  //     ticker,
-  //     trader1,
-  //     trader2,
-  //     amount,
-  //     price,
-  //     date
-  //   ) => {
-  //     const trade = {
-  //       tradeId,
-  //       orderId,
-  //       ticker,
-  //       trader1,
-  //       trader2,
-  //       amount,
-  //       price,
-  //       date,
-  //     };
-  //     setTrades([...trades, trade]);
-  //   };
-
-  //   useEffect(() => {
-  //     contracts.dex.on("NewTrade", listenToTrades);
-  //   }, []);
-
   return (
     <Layout>
       <Header>
@@ -176,7 +144,7 @@ export default function Container({
         </Title>
       </Header>
       <Layout>
-        <Sider width={250}>
+        <Sider style={{ height: "89vh" }} width={250}>
           <SideBar
             setSelectedToken={setSelectedToken}
             tokens={tokens.filter((item) => item !== "DAI")}
@@ -196,8 +164,15 @@ export default function Container({
             walletBalance={balance.tokenWallet}
             contractBalance={balance.tokenDex}
           />
-          {/* <AllTrades trades={trades}></AllTrades> */}
-          <AllOrders orders={orders} />
+
+          {selectedToken !== "DAI" ? (
+            <NewOrder
+              createLimitOrder={createLimitOrder}
+              createMarketOrder={createMarketOrder}
+              selectedToken={selectedToken}
+            ></NewOrder>
+          ) : null}
+
           <MyOrders
             orders={{
               buy: orders.buy.filter(
@@ -210,6 +185,8 @@ export default function Container({
               ),
             }}
           />
+
+          <AllOrders orders={orders} />
         </Content>
       </Layout>
     </Layout>

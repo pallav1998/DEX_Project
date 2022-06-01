@@ -3,13 +3,12 @@ import React, { useEffect, useState } from "react";
 import { getContracts, getWeb3 } from "./utils";
 import { Spin } from "antd";
 import Container from "./Components/Container";
-import "antd/dist/antd.css";
 
 function App() {
   const [provider, setProvider] = useState(undefined);
   const [contracts, setContracts] = useState(undefined);
   const [accounts, setAccounts] = useState([]);
-  const [selectedToken, setSelectedToken] = useState("DAI");
+  const [selectedToken, setSelectedToken] = useState("BAT");
   const [balance, setBalance] = useState({});
 
   useEffect(() => {
