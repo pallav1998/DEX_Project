@@ -1,7 +1,7 @@
 import React from "react";
 import { Typography } from "antd";
-
 const { Title } = Typography;
+
 export default function Market({ selectedToken }) {
   return (
     <div>

@@ -1,7 +1,7 @@
 import React from "react";
 import { List } from "antd";
 import styles from "./styles.module.css";
-// import NewOrder from "./NewOrder";
+import NewOrder from "./NewOrder";
 
 export default function SideBar({
   tokens,
@@ -10,8 +10,8 @@ export default function SideBar({
   deposit,
   withdraw,
   balance,
-  //   createLimitOrder,
-  //   createMarketOrder,
+  createLimitOrder,
+  createMarketOrder,
 }) {
   return (
     <div>
@@ -31,12 +31,12 @@ export default function SideBar({
         )}
       />
 
-      {/* {selectedToken !== "DAI" ? (
+      {selectedToken !== "DAI" ? (
         <NewOrder
           createLimitOrder={createLimitOrder}
           createMarketOrder={createMarketOrder}
         ></NewOrder>
-      ) : null} */}
+      ) : null}
     </div>
   );
 }

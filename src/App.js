@@ -33,7 +33,7 @@ function App() {
     return provider && contracts && accounts.length > 0;
   };
 
-  console.log("contracts:", contracts);
+  // console.log("contracts:", contracts);
   return (
     <div className="App">
       {!isReady() ? (
@@ -47,7 +47,7 @@ function App() {
           selectedToken={selectedToken}
           balance={balance}
           setBalance={setBalance}
-          // setAccounts={setAccounts}
+          setAccounts={setAccounts}
         />
       )}
     </div>

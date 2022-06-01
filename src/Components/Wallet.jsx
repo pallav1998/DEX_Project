@@ -20,7 +20,6 @@ function Wallet({
   const [dipositModal, setDipositModal] = useState(false);
 
   const onSubmit = (e) => {
-    // e.preventDefault();
     console.log(amount, direction);
     if (direction === Direction.DEPOSIT) {
       deposit(amount);
