@@ -1,6 +1,6 @@
 <h1 align="center">
   <img alt="cgapp logo" src="https://vectorified.com/image/ethereum-logo-vector-13.png" width="224px"/><br/>
-  DCX - Decentralized Coin Exchange
+  Decentralized Exchange Of ERC20
   <br/>
   
 <br/>
