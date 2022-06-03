@@ -27,7 +27,6 @@
 - [Installation](#installation)
     - [Setup Backend](#setup-backend)
     - [Setup frontend](#setup-frontend)
-- [Commands](#⚙-commands)
 - [Contributor](#👨🏻‍💻-contributor)
 - [Contact Me](#📩-contact-me-👇)
 
@@ -39,30 +38,20 @@ git clone https://github.com/pallav1998/DEX_Project.git
 ```
 
 ## 🔗 Setup Backend
-go to the backend and install dependencies with `npm install`
+go to the backend folder with `cd backend/` and install dependencies with `npm install`
 
-Create variables inside *.env* file as mentioned below
+To run deploy the Smart Contract write the following command mentioned below
 ```
-RINKEBY_URL
-PRIVATE_KEY
+npx hardhat run scripts/dex.js --network localhost
 ```
 
 
 ## 🔗 Setup Frontend
-go to the client folder and install dependencies with `npm install`
+install dependencies with `npm install`
 
-Create variables inside *.env* file as mentioned below
-
+To run the Project write the following command mentioned below
 ```
-REACT_APP_CONTRACT_ADDRESS
-```
-
-## 🤖 Commands
-Use following command for testing, deployment and starting the server locally
-```
-npm run deploy
-npm test
-npm start
+npm run start
 ```
 
 ## 👨🏻‍💻 Contributor
