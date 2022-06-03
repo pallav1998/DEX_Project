@@ -10,7 +10,6 @@
 
 ##  [🌐 Demo](https://dex-project.netlify.app/)
 
-<br/>
 ## 🔧 Tech Stack 
 <p align="center">
 
