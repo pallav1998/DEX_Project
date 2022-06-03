@@ -6,16 +6,11 @@
 <br/>
 </h1>
 <p align="center">DCX is a Ethereum blockchain based Dapp Integrated with frontend(React) and other necessary tools such as Truffle(for testing) and HardHat(for deployment). </p>
-<p align="center">
-<img src="https://img.shields.io/website-up-down-green-red/http/solventx.in.svg" alt="website up"/>
-<img src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" alt="maintained"/>
-<img src="https://img.shields.io/badge/License-MIT-green" alt="license"/>
-</p>
 
 
-##  [🌐 Demo](https://dcx.app3.in)
+##  [🌐 Demo](https://dex-project.netlify.app/)
 
-
+<br/>
 ## 🔧 Tech Stack 
 <p align="center">
 
