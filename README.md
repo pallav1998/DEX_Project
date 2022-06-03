@@ -1,70 +1,88 @@
-# Getting Started with Create React App
+<h1 align="center">
+  <img alt="cgapp logo" src="https://vectorified.com/image/ethereum-logo-vector-13.png" width="224px"/><br/>
+  DCX - Decentralized Coin Exchange
+  <br/>
+  
+<br/>
+</h1>
+<p align="center">DCX is a Ethereum blockchain based Dapp Integrated with frontend(React) and other necessary tools such as Truffle(for testing) and HardHat(for deployment). </p>
+<p align="center">
+<img src="https://img.shields.io/website-up-down-green-red/http/solventx.in.svg" alt="website up"/>
+<img src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" alt="maintained"/>
+<img src="https://img.shields.io/badge/License-MIT-green" alt="license"/>
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+##  [🌐 Demo](https://dcx.app3.in)
 
-In the project directory, you can run:
 
-### `npm start`
+## 🔧 Tech Stack 
+<p align="center">
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5"/>
+<img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3"/>
+<img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" alt="JavaScript"/>
+<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React"/>
+<br/>
+<img src="https://img.shields.io/badge/Solidity-000000?style=for-the-badge&logo=solidity&logoColor=white" alt="Solidity"/>
+<img src="https://img.shields.io/badge/HardHat-F59812?style=for-the-badge&logo=hardhat&logoColor=white" alt="hardhat"/>
+<img src="https://img.shields.io/badge/Infura-B7472A?style=for-the-badge&logo=Infura&logoColor=white" alt="Infura"/>
+</p>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📃 Table of contents
+- [Installation](#installation)
+    - [Setup Backend](#setup-backend)
+    - [Setup frontend](#setup-frontend)
+- [Commands](#⚙-commands)
+- [Contributor](#👨🏻‍💻-contributor)
+- [Contact Me](#📩-contact-me-👇)
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📥 Installation
+- Start by cloning the repo with following command
+```
+git clone https://github.com/pallav1998/DEX_Project.git
+```
 
-### `npm run build`
+## 🔗 Setup Backend
+go to the backend and install dependencies with `npm install`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Create variables inside *.env* file as mentioned below
+```
+RINKEBY_URL
+PRIVATE_KEY
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🔗 Setup Frontend
+go to the client folder and install dependencies with `npm install`
 
-### `npm run eject`
+Create variables inside *.env* file as mentioned below
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+REACT_APP_CONTRACT_ADDRESS
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🤖 Commands
+Use following command for testing, deployment and starting the server locally
+```
+npm run deploy
+npm test
+npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 👨🏻‍💻 Contributor
+- ## [Pallav Jain](https://pallavportfolio.netlify.app/)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+## 📩 Contact Me 👇
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<a href="https://github.com/pallav1998">
+    <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
+</a>
+<a href="mailto:jain.pallav1998@gmail.com">
+    <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail"/>
+</a>
+<a href="https://www.linkedin.com/in/pj1998/">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="Linkedin"/>
+</a>
